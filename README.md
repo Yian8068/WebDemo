@@ -1,2 +1,0 @@
-# WebDemo
-JQUERY/ANGULAR
