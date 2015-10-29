@@ -29,7 +29,7 @@
     </div>
 
     <!-- Main body -->
-    <div class="mainbody">
+    <div class="mainbody"  style="background-image:url(img/bg2.jpg)">
       <div class="icon-menu">
         <i class="fa fa-bars"></i>
         Menu
@@ -37,38 +37,40 @@
       <div class="title">
       	<h1>How's the Weather?</h1>
         <h2>今天天氣如何呢?(以ANGULAR JS實作)</h2>
-        <h3>{{info.datasetDescription}}</h3>
-        <h4>
-        更新時間：{{info.update|date:"yyyy.MM.dd(EEE) HH:mm"}}</h4>
+          
       </div><!--title-->
-      		<div class="cityname" style="background-color:#999">
-           	  <h1 style="font-size:24px">{{citySelect.locationName}}</h1>
-                <div style="background-color:#CCC">
+      		<div class="cityname" >
+              <h3>{{info.datasetDescription}} 	  
+                  (更新時間：{{info.update|date:"yyyy.MM.dd(EEE) HH:mm"}})</h3>
+                <div >
+                <h1>{{citySelect.locationName}}</h1>
       			<select ng-model="citySelect" 
                 		
                         id="citySet" 
                         ng-options="name.locationName for name in local">
-                	<option  value="name.locationName.id"></option>
+               	  <option  value="name.locationName.id"></option>
               	</select>
                 
                 </div>
-                <div ><table width="100%"  style="text-align:center">
-  <tr>
-    <th scope="col"></th>
-    <th scope="col">天氣狀況</th>
-    <th scope="col">氣溫(℃)</th>
-    <th scope="col">舒適度</th>
-    <th scope="col">降雨機率</th>
-  </tr>
-  <tr ng-repeat="t in Time">
-    <th scope="row" style="width:20%"><span>{{t.startTime|date:"MM.dd a hh:mm "}}<br> ~ {{t.endTime|date:"MM.dd a hh:mm "}}</span></th>
-    <td style="width:20%">{{citySelect.weatherElement[0].time[$index].parameter.parameterName}}</td>
-    <td style="width:20%">{{citySelect.weatherElement[1].time[$index].parameter.parameterName}}~
-    	{{citySelect.weatherElement[2].time[$index].parameter.parameterName}}</td>
-    <td style="width:20%">{{citySelect.weatherElement[3].time[$index].parameter.parameterName}}</td>
-    <td style="width:20%">{{citySelect.weatherElement[4].time[$index].parameter.parameterName}} %</td>
-  </tr>
-  </table>
+                <div class="weathertable">
+               	  <table width="100%"  style="text-align:center">
+  					<tr>
+    					<th scope="col"></th>
+    					<th scope="col">天氣狀況</th>
+    					<th scope="col">氣溫(℃)</th>
+    					<th scope="col">舒適度</th>
+    					<th scope="col">降雨機率</th>
+  					</tr>
+  					<tr ng-repeat="t in Time">
+    					<th scope="row" style="width:20%">
+                        <span>{{t.startTime|date:"MM.dd a hh:mm "}}<br> ~ {{t.endTime|date:"MM.dd a hh:mm "}}</span></th>
+    					<td style="width:20%">{{citySelect.weatherElement[0].time[$index].parameter.parameterName}}</td>
+    					<td style="width:20%">{{citySelect.weatherElement[1].time[$index].parameter.parameterName}}~
+    										  {{citySelect.weatherElement[2].time[$index].parameter.parameterName}}</td>
+    					<td style="width:20%">{{citySelect.weatherElement[3].time[$index].parameter.parameterName}}</td>
+    					<td style="width:20%">{{citySelect.weatherElement[4].time[$index].parameter.parameterName}} %</td>
+ 					</tr>
+				  </table>
 
                 	<div>
                		  
