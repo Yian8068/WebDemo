@@ -4,6 +4,7 @@ body {
   margin: 0px auto;
   overflow: hidden;
   position: relative;
+  overflow:auto;
 }
 .container{
 	}
@@ -21,6 +22,7 @@ body {
 .mainbody {
   background-image: url('img/background1.jpg'); 
   height: 100%;
+  padding-bottom:100px;
   -webkit-background-size: cover;
      -moz-background-size: cover;
        -o-background-size: cover;
@@ -101,12 +103,12 @@ body {
 	height:	50%;	
 	}
 .weather {
-	color:	#FFF;
+	color:#333;
 	text-align:center;
 	}
 .weather p{
-	background:#09C;
+	
 	text-align:center;
 	font-family:Verdana, Geneva, sans-serif;
-	height:50%;
+	height:200px;
 	}

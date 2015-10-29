@@ -1,5 +1,9 @@
 <html>
-  <head>
+    <?php
+    	include "cors.php";
+    ?>
+   <head>
+
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400;300' rel='stylesheet' type='text/css'>
     <link href='stylesheet.css' rel='stylesheet'>
@@ -33,29 +37,84 @@
       <div class="title">
       	<h1>How's the Weather?</h1>
         <h2>今天天氣如何呢?(以ANGULAR JS實作)</h2>
-      </div>
-      <div class="article">
-      	<div class="article-p">
-      	<p></p>
-        </div>
-        <div class="weather" >
-        	<p>{{info.location.locationName}}</p>
-        	<div >
-           
-            
-            
+        <h3>{{info.datasetDescription}}</h3>
+        <h4>
+        更新時間：{{info.update|date:"yyyy.MM.dd(EEE) HH:mm"}}</h4>
+      </div><!--title-->
+      		<div class="cityname" style="background-color:#999">
+           	  <h1 style="font-size:24px">{{citySelect.locationName}}</h1>
+                <div style="background-color:#CCC">
+      			<select ng-model="citySelect" 
+                		
+                        id="citySet" 
+                        ng-options="name.locationName for name in local">
+                	<option  value="name.locationName.id"></option>
+              	</select>
+                
+                </div>
+                <div ><table width="100%"  style="text-align:center">
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">天氣狀況</th>
+    <th scope="col">氣溫(℃)</th>
+    <th scope="col">舒適度</th>
+    <th scope="col">降雨機率</th>
+  </tr>
+  <tr ng-repeat="t in Time">
+    <th scope="row" style="width:20%"><span>{{t.startTime|date:"MM.dd a hh:mm "}}<br> ~ {{t.endTime|date:"MM.dd a hh:mm "}}</span></th>
+    <td style="width:20%">{{citySelect.weatherElement[0].time[$index].parameter.parameterName}}</td>
+    <td style="width:20%">{{citySelect.weatherElement[1].time[$index].parameter.parameterName}}~
+    	{{citySelect.weatherElement[2].time[$index].parameter.parameterName}}</td>
+    <td style="width:20%">{{citySelect.weatherElement[3].time[$index].parameter.parameterName}}</td>
+    <td style="width:20%">{{citySelect.weatherElement[4].time[$index].parameter.parameterName}} %</td>
+  </tr>
+  </table>
+
+                	<div>
+               		  
+
+
+                        
+                	</div>
+                </div>
             </div>
-        </div>
-      </div>
-      </div>
-    </div>
+      <div class="article" >
+      	<!--<div class="article-p" ng-repeat="name in local">
+      	<p>{{name.locationName}}</p>
+        
+        <div class="weather" >
+        	<div class="obj" ng-repeat="obj in name.weatherElement" >
+            	{{obj.elementName}}
+                
+                <div class="start_endTime" ng_repeat="seT in obj.time">
+
+                	<div class="day" >
+                    
+           				<span>{{seT.parameter.parameterName}}</span>
+                	</div>
+                </div>
+            </div>
+         </div>   
+            
+
+          
+        </div>-->
+      </div><!--article-->
+      </div><!--mainbody-->
+    </div><!--container-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="app.js"></script>
 
-    <!--<script src="xml2json.js"></script>-->
-    
+
     <script src="js/angular/module.js"></script>
     <script src="js/angular/Controllers/weatherCtrl.js"></script>
+    <script src="getcors.js"></script>
     <script src="js/angular/Service/weatherser.js"></script>
+    <script src="xml2json.js"></script>
+    <!--<script src="vkbeautify.js"></script>-->
+    
+    <!--<script src="js/getweather.js"></script>-->
+   
+
   </body>
 </html>
