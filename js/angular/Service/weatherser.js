@@ -4,7 +4,7 @@ app.factory('weatherser',['$http',function($http){
 
 return $http({
 	method:'GET',
-	url:"http://opendata.cwb.gov.tw/opendataapi?dataid=F-C0032-001&authorizationkey=CWB-92799803-3FCA-4361-BD85-44ECAE90D988",
+	url:"https://crossorigin.me/http://opendata.cwb.gov.tw/opendataapi?dataid=F-C0032-001&authorizationkey=CWB-92799803-3FCA-4361-BD85-44ECAE90D988",
 	transformResponse:function (data){
 		console.log('trans request!>>>')
 		  var x2js = new X2JS();
