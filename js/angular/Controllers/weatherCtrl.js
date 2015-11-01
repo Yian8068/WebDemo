@@ -1,5 +1,5 @@
-
-app.controller("weatherCtrl", ['$scope', '$http','weatherser', function($scope,$http, weatherser) {
+app
+.controller("weatherCtrl", ['$scope', '$http','weatherser', function($scope,$http, weatherser) {
 	$scope.info=[];
 	var city=[{'name':'臺北市','id':'009'},{'name':'新北市','id':'010'},
 {'name':'基隆市','id':'011'},{'name':'花蓮縣','id':'012'},{'name':'宜蘭縣','id':'013'},
@@ -12,16 +12,22 @@ app.controller("weatherCtrl", ['$scope', '$http','weatherser', function($scope,$
 	loadinfo();
 	function loadinfo(){
 	weatherser.then(function(data){
-		var data1=data[0].data;
-		var data2=data[1].data;
+		//var data1=data[0].data;
+		//var data2=data[1].data;
 		//console.log(city[0].name);
-		//console.log(data2);
+		/*akk(0,'https://crossorigin.me/http://opendata.cwb.gov.tw/opendataapi?dataid=F-C0032-009'
+				+
+				'&authorizationkey=CWB-92799803-3FCA-4361-BD85-44ECAE90D988');*/
+					
 		
-		$scope.todayinfo=data2.cwbopendata.dataset.parameterSet.parameter;
+		//console.log();	
+		$scope.todayinfo=[];
 		
-		$scope.local=data1.cwbopendata.dataset.location;
-		$scope.info=data1.cwbopendata.dataset.datasetInfo;
-		$scope.Time=data1.cwbopendata.dataset.location[0].weatherElement[0].time;	
+		$scope.local=data.data.cwbopendata.dataset.location;
+
+
+		$scope.info=data.data.cwbopendata.dataset.datasetInfo;
+		$scope.Time=data.data.cwbopendata.dataset.location[0].weatherElement[0].time;	
 		$scope.citySelect=$scope.local[0];
 		//console.log($scope.local);
 		$scope.eachtitle=[' ','天氣狀況','氣溫(℃)','舒適度','降雨機率'];	
@@ -39,7 +45,7 @@ app.controller("weatherCtrl", ['$scope', '$http','weatherser', function($scope,$
 		  	
 			akk(key,$scope.local[key].helperurl);
 			});
-		console.log($scope.todayinfo);
+		//console.log($scope.todayinfo);
 	});
 	
 	}
@@ -56,8 +62,9 @@ app.controller("weatherCtrl", ['$scope', '$http','weatherser', function($scope,$
 				  return jj;
 				}})
 			.success(function(data){
-				//console.log(dataSet);
+				//console.log(data.cwbopendata.dataset.parameterSet);
 				$scope.todayinfo[id]=data.cwbopendata.dataset.parameterSet.parameter;
+				
 				return data;
 				})
 			.error(function(err){
