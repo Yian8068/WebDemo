@@ -115,7 +115,7 @@ body {
 	font-family:Verdana, Geneva, sans-serif;
 	height:200px;
 	}
-table{
+.weathertable .wtable{
 	text-shadow:#CCC;
 	font-weight:bolder;
 	color:#999;}
